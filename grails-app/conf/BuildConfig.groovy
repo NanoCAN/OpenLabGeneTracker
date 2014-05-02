@@ -27,7 +27,7 @@
  *
  * ############################################################################
  */
-grails.plugin.location.backend = "../OpenLabBackend"
+//grails.plugin.location.backend = "../OpenLabBackend"
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
