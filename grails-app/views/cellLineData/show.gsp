@@ -4,7 +4,7 @@
 <html>
 	<head>
         <g:setProvider library="prototype"/>
-        <meta name="layout" content="${params.bodyOnly?'body':'main'}" />
+        <meta name="layout" content="body" />
 		<g:set var="entityName" value="${message(code: 'cellLineData.label', default: 'CellLineData')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
