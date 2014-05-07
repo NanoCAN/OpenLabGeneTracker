@@ -35,11 +35,12 @@ import org.openlab.genetracker.*;
 class GeneOperationsModule implements Module{
 
 	def getPluginName() {
-		"gene-tracker"
+		"open-lab-gene-tracker"
 	}
 
 	def getTemplateForDomainClass(def domainClass)
 	{
+        println "here"
 		if(domainClass == "gene") return "geneOperations"
 	}
 

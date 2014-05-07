@@ -148,15 +148,6 @@ class GeneController extends DataObjectController{
 		//alter name
 		newGene.name = oldGene.name + "-" + params.typeShort +(otherVariantGenes.size()+1)
 		
-		println newGene.save()
-		
-		if(newGene.hasErrors())
-		{
-			newGene.errors.each{
-				println it
-			}
-		}
-		
 		if(!newGene.hasErrors() && newGene.save())
 		{
 			flash.message = "Created variant ${params.type} ${newGene} from Gene ${oldGene}."
@@ -169,7 +160,7 @@ class GeneController extends DataObjectController{
 		}
 		else
 		{
-			flash.message = "Creation of ${params.type} variant failed!" + oldGene.errors.each{it.toString()}
+			flash.message = "Creation of ${params.type} variant failed!" + newGene.errors.each{it.toString()}
 			redirect(action:"show", id: oldGene.id, params: [bodyOnly: true])
 		}
 	}

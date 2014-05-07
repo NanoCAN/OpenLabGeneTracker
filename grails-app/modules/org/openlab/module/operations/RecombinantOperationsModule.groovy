@@ -36,7 +36,7 @@ import org.openlab.genetracker.Recombinant
 class RecombinantOperationsModule implements Module{
 
 	def getPluginName() {
-		"gene-tracker"
+		"open-lab-gene-tracker"
 	}
 
 	def getTemplateForDomainClass(def domainClass)

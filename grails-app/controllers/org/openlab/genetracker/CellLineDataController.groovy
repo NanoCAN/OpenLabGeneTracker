@@ -29,6 +29,7 @@
  */
 package org.openlab.genetracker
 
+import org.openlab.genetracker.vector.Acceptor
 import org.springframework.dao.DataIntegrityViolationException;
 
 /**
@@ -40,7 +41,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 class CellLineDataController{
 
 	def scaffold = CellLineData
-	def RecombinantsService
+    def domainObjectCloningService
 	
 	/**
 	 * Copies elements from a persistentSet into a new list
@@ -156,4 +157,39 @@ class CellLineDataController{
 		}
 		else render "Select a gene."
 	}
+
+    def createNewClone(){
+        def cellLineDataInstance = CellLineData.get(params.long("id"))
+
+        def cellLineDataCopy = new CellLineData()
+        cellLineDataCopy.acceptor = cellLineDataInstance.acceptor
+        cellLineDataCopy.cellLine = cellLineDataInstance.cellLine
+        cellLineDataCopy.cultureMedia = cellLineDataInstance.cultureMedia
+        cellLineDataCopy.firstRecombinant = cellLineDataInstance.firstRecombinant
+        cellLineDataCopy.secondRecombinant = cellLineDataInstance.secondRecombinant
+        cellLineDataCopy.notes = cellLineDataInstance.notes
+        cellLineDataCopy.plasmidNumber = cellLineDataInstance.plasmidNumber
+        cellLineDataCopy.colonyNumber = cellLineDataInstance.colonyNumber
+
+        if(!cellLineDataCopy.hasErrors())
+        {
+            cellLineDataInstance.projects.each{
+                it.addToObject(cellLineDataCopy)
+            }
+
+            cellLineDataInstance.mediumAdditives.each{
+                cellLineDataCopy.addToMediumAdditives(it)
+            }
+
+            cellLineDataCopy.save(flush: true)
+            flash.message = "Successfully created copy of ${cellLineDataInstance} with id ${cellLineDataCopy.id}. Be aware that you are working on the copy now."
+
+            render(view: "show", model:[cellLineDataInstance: cellLineDataCopy])
+         }
+        else
+        {
+            flash.message = "Creation of copy failed!" + cellLineDataCopy.errors.each{it.toString()}
+            redirect(controller: "cellLineData", action:"show", id: cellLineDataCopy.id, params: [bodyOnly: true])
+        }
+    }
 }

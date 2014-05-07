@@ -1,14 +1,14 @@
 /*
- * Copyright (C) 2013 
+ * Copyright (C) 2014
  * Center for Excellence in Nanomedicine (NanoCAN)
  * Molecular Oncology
  * University of Southern Denmark
  * ###############################################
  * Written by:	Markus List
  * Contact: 	mlist'at'health'.'sdu'.'dk
- * Web:		http://www.nanocan.org
+ * Web:		    http://www.nanocan.org
  * ###########################################################################
- *	
+ *
  *	This file is part of OpenLabFramework.
  *
  *  OpenLabFramework is free software: you can redistribute it and/or modify
@@ -27,25 +27,44 @@
  *
  * ############################################################################
  */
-package org.openlab.module.addin
+package org.openlab.module.operations
 
 import org.openlab.module.*;
+import org.openlab.genetracker.*;
 
-class GeneLegendAddinModule implements AddinModule{
+class CellLineDataOperationsModule implements Module{
 
-	def getName()
-	{
-		"gene legend"
-	}
-	
-	def getTemplate()
-	{
-		"geneLegendAddin"
-	}
-	
-	def getPluginName()
-	{
+	def getPluginName() {
 		"open-lab-gene-tracker"
 	}
 
+	def getTemplateForDomainClass(def domainClass)
+	{
+		if(domainClass == "cellLineData") return "cellLineDataOperations"
+	}
+
+    @Override
+    def getMobileTemplateForDomainClass(Object domainClass) {
+        return null
+    }
+
+    def isInterestedIn(def domainClass, def type)
+	{
+		if((type == "operations") && (domainClass == "cellLineData")) return true
+		return false
+	}
+
+	def getModelForDomainClass(def domainClass, def id)
+	{
+		if(domainClass == "cellLineData")
+		{
+			def cellLineData = CellLineData.get(id)
+			[cellLineDataInstance: cellLineData]
+		}
+	}
+
+    @Override
+    def isMobile() {
+        return false
+    }
 }
