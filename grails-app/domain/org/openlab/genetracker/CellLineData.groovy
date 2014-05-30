@@ -51,16 +51,16 @@ class CellLineData extends DataObject {
 
     //make dataobjects target for searchable plugin
     static searchable = {
-        boost 5.0
         mapping {
-            firstRecombinant component: true
-            secondRecombinant component: true
-            cultureMedia component:true
-            cellLine component: true
-            acceptor component: true
-            mediumAdditives: component: true
-            //needed for suggestions in searchable
+            boost 5.0
             spellCheck "include"
+            firstRecombinant component: [maxDepth : 1]
+            secondRecombinant component: [maxDepth : 1]
+            cultureMedia component: [maxDepth : 1]
+            cellLine component: [maxDepth : 1]
+            acceptor component: [maxDepth : 1]
+            mediumAdditives component: [maxDepth : 1]
+            projects reference: true
         }
     }
 

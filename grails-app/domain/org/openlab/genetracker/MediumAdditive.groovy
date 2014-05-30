@@ -38,5 +38,11 @@ class MediumAdditive extends MasterDataObject {
 		cache true
     }
 
+    static searchable = {
+        mapping {
+            root false
+        }
+    }
+
 	String description
 }

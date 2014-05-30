@@ -45,12 +45,7 @@ class AntibioticsWithConcentration {
         cache true
     }
 
-    static searchable = true/*{
-		mapping {
-			antibiotics component: true
-			cellLineData reference: true
-		}
-	}                         */
+    static searchable = true
 
     String toString() {
         antibiotics.toString() + " - " + concentration.toString()

@@ -64,9 +64,8 @@ class Recombinant extends DataObject{
 	//make dataobjects target for searchable plugin
 	static searchable = {
 		mapping {
-			vector component: true
-			genes component: true
-			projects reference: true
+			vector component: [maxDepth : 1]
+			genes component: [maxDepth : 1]
 		}
 	}
 	

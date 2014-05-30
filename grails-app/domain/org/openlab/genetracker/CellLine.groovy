@@ -43,7 +43,9 @@ class CellLine extends MasterDataObject {
 	String notes
 	
 	static searchable = {
-		label boost: 1.0
+		mapping{
+            root false
+        }
 	}
 	
 	String label

@@ -51,8 +51,8 @@ public class Vector{
 	//make dataobjects target for searchable plugin
 	static searchable = {
 		mapping {
-			//needed for suggestions in searchable
-			spellCheck "include"
+            root false
+            spellCheck "include"
 		}
 	}
 	

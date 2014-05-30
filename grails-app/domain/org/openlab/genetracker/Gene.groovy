@@ -80,7 +80,8 @@ public class Gene extends DataObject implements Serializable{
 	//make dataobjects target for searchable plugin
 	static searchable = {
 			wildTypeGene reference: true
-			projects reference:true
+			projects reference: true
+            spellCheck "include"
 	}
 	
 	static belongsTo = [Project]

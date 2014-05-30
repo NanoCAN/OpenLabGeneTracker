@@ -42,5 +42,9 @@ class CultureMedia extends MasterDataObject {
         label
     }
 
-    static searchable = true
+    static searchable = {
+        mapping{
+            root false
+        }
+    }
 }
