@@ -31,7 +31,7 @@ package org.openlab.genetracker;
 
 import org.openlab.main.*;
 
-class OrganismController extends MainController
+class OrganismController
 {	
 	def scaffold = Organism;
 }

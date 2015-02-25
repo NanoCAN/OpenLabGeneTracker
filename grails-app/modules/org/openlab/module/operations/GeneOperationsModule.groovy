@@ -40,7 +40,6 @@ class GeneOperationsModule implements Module{
 
 	def getTemplateForDomainClass(def domainClass)
 	{
-        println "here"
 		if(domainClass == "gene") return "geneOperations"
 	}
 

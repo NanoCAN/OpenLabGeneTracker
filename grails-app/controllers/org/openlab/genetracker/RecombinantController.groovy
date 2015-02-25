@@ -49,7 +49,6 @@ class RecombinantController{
         def vectors = Vector.where{ type != "Acceptor"}.list(sort: "label")
 
         def newModel = [gene: gene, geneVectorList: gvectors, vectors: vectors]
-
         render(template: "/tabs/geneVectorTab", model: newModel)
     }
 
