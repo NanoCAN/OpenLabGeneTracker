@@ -43,6 +43,7 @@
                 <g:hiddenField name="cellLineData.id" value="${cellLineData.id}"/>
                 Date: <g:datePicker name="date" value="${new java.util.Date()}" precision="day" relativeYears="${-10..1}"/>
                 Passage Nr: <g:textField name="passageNr" value="xx/xx/xx"/>
+                <input type="hidden" name="notes" value=""/>
                 <g:submitToRemote controller="passage" update="passageTab" action="addPassageInCellLineDataTab" onFailure="alert('Operation not possible!')" value="Add passage"/>
             </g:form>
         </div>

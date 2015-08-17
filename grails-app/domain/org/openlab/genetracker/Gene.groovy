@@ -30,7 +30,6 @@
 package org.openlab.genetracker;
 
 import org.openlab.main.DataObject;
-import org.openlab.genetracker.*;
 import org.openlab.main.Project;
 
 public class Gene extends DataObject implements Serializable{

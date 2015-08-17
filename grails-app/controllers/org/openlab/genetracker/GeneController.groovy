@@ -38,7 +38,7 @@ import org.openlab.main.*;
  * @author markus.list
  *
  */
-class GeneController extends DataObjectController{
+class GeneController{
 	
 	def scaffold = Gene
 	def NCBIParserService

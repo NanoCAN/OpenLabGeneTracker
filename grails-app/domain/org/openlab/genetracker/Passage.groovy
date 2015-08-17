@@ -34,9 +34,10 @@ import org.openlab.security.*;
 
 class Passage extends SubDataObject{
 
-	static mapping = {
+	static mapping =  {
 		table 'gtPassage'
 		cache true
+		notes nullable: true
 		}
 	static belongsTo = [cellLineData: CellLineData]
     CellLineData cellLineData
